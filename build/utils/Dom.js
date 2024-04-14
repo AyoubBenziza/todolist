@@ -4,7 +4,7 @@ export default class Dom {
      * enfant de parent et ajoute un attribut en utilisant le paramètre attributes
      * @param {String} markup_name
      * @param {String} text
-     * @param {domElement} parent
+     * @param {HTMLElement} parent
      * @param {Object} attributes
      * @returns domElement
      */

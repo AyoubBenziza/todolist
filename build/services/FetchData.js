@@ -28,11 +28,14 @@ class FetchData {
             })
                 .catch((error) => {
                 console.log(`Erreur attrapée` + error);
+                // Renvoie une popup d'alerte de notre erreur
+                alert(`Erreur au chargement des tâches: ` + error.message);
             });
         });
     }
     /**
      * Ajoute une tâche sur le serveur json-server en exécutant une requête http avec le verbe POST
+     * @param {Partial<Task>} new_task
      * @returns Promise<Task>
      */
     static addTask(new_task) {
@@ -59,9 +62,17 @@ class FetchData {
             })
                 .catch((error) => {
                 console.log(`Erreur attrapée dans addTask` + error);
+                // Renvoie une popup d'alerte de notre erreur
+                alert(`Erreur à la création de la tâche: ` + error.message);
             });
         });
     }
+    /**
+     * Modifie une tâche sur le serveur json-server en exécutant une requête http avec le verbe PATCH
+     * @param {string} id
+     * @param {Partial<Task>} updatedTask
+     * @returns Promise<Task>
+     */
     static patchTask(id, updatedTask) {
         return __awaiter(this, void 0, void 0, function* () {
             return fetch(`${FetchData.url}/${id}`, {
@@ -85,9 +96,16 @@ class FetchData {
             })
                 .catch((error) => {
                 console.log(`Error caught in patchTask: ` + error);
+                // Renvoie une popup d'alerte de notre erreur
+                alert(`Erreur à la modification de la tâche: ` + error.message);
             });
         });
     }
+    /**
+     * Supprime une tâche sur le serveur json-server en exécutant une requête http avec le verbe DELETE
+     * @param {string} id
+     * @returns Promise<Task>
+     */
     static deleteTask(id) {
         return __awaiter(this, void 0, void 0, function* () {
             return fetch(`${FetchData.url}/${id}`, {
@@ -109,6 +127,8 @@ class FetchData {
             })
                 .catch((error) => {
                 console.log(`Error caught in deleteTask: ` + error);
+                // Renvoie une popup d'alerte de notre erreur
+                alert(`Erreur à la suppression de la tâche: ` + error.message);
             });
         });
     }

@@ -46,15 +46,12 @@ export default class ToDoList extends Dom {
           name: taskName,
           done: false,
         };
-        new Task(
-          id,
-          new_task.name,
-          new_task.done,
-          this.domElts.sectionListTasks
-        );
         this.domElts.input.value = "";
         // Ajout de la tâche sur le serveur via FechData.addTask(new_task)
-        FetchData.addTask(new_task);
+        // Créé la tâche sur notre page html seulement si la requête addTask est correcte
+        FetchData.addTask(new_task).then(() => {
+          window.location.reload();
+        });
       }
     });
   }
